@@ -1,11 +1,11 @@
 $(document).ready(function() {
-  chrome.storage.sync.get(['total','limit'],function(budget){
+  chrome.storage.sync.get(['total','limit'],function(budget) {
       $('#total').text(budget.total);
       $('#limit').text(budget.limit);
   });
 
   $('#spend-amount').click(function(){
-    chrome.storage.sync.get(['total', 'limit'],function(budget){
+    chrome.storage.sync.get(['total', 'limit'],function(budget) {
       var newTotal = 0;
       if (budget.total){
         newTotal += parseInt(budget.total);
