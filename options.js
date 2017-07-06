@@ -1,28 +1,28 @@
-$(document).ready(function() {
-  chrome.storage.sync.get('limit',function(budget) {
-      $('#limit').val(budget.limit);
-  });
+$(function() {
+  chrome.storage.sync.get('limit', function(budget) {
+    $('#limit').val(budget.limit);
+  })
 
-  $('#save-limit').click(function(){
+  $('#saveLimit').click(function() {
     var limit = $('#limit').val();
-    if (limit){
-      chrome.storage.sync.set({'limit': limit}, function() {
-          close();
-      });
-    }
-  });
 
-  $('#reset-total').click(function(){
+    if (limit) {
+      chrome.storage.sync.set({'limit': limit}, function() {
+        close();
+      })
+    }
+  })
+
+  $('#resetTotal').click(function() {
     chrome.storage.sync.set({'total': 0}, function() {
       var notifOptions = {
-          type: "basic",
-          iconUrl: "icon48.png",
-          title: "Resetting Total",
-          message: "Total has been reset to 0."
-      };
-     
-      chrome.notifications.create('resetNotif', notifOptions);
-       
-    });
-  });
-});
+        type: 'basic',
+        iconUrl: 'icon48.png',
+        title: 'Total reset!',
+        message: "Total has been reset to 0"
+      }
+      chrome.notifications.create('resetNotif', notifOptions)
+    })
+    
+  })
+})
